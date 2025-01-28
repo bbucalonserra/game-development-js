@@ -1,2 +1,2 @@
-# game-project-js
-This repository is a game project developed in Javascript, using the library p5.js.
+# Game Development - Javascript
+Please, feel free to play the game by clicking [HERE](https://bbucalonserra.github.io/game-project-js/)
