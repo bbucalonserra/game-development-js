@@ -54,19 +54,23 @@ function preload() {
 	soundFormats('mp3', 'wav');
 
 	// Load sounds
-	// Jumpg
+	// Jump
+	// Sound collected from: https://pixabay.com/sound-effects/jumping-1-6452/
 	jump_sound = loadSound('assets/jump.mp3');
 	jump_sound.setVolume(0.8);
 
 	// Scream sound
+	// Sound collected from: https://pixabay.com/sound-effects/scream-85294/
 	scream_sound = loadSound('assets/scream.mp3');
 	scream_sound.setVolume(0.5);
 
 	// Collectable Sound
+	// Sound collected from: https://mixkit.co/free-sound-effects/magic/
 	book_collection_sound = loadSound('assets/book_collection.mp3');
 	book_collection_sound.setVolume(0.5);
 
 	// Music
+	// Sound collected from: https://pixabay.com/music/main-title-orchestra-fantasy-111168/
 	soundtrack_music = loadSound('assets/soundtrack.mp3');
 	soundtrack_music.setVolume(0.1);
 }
