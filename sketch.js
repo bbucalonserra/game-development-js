@@ -50,7 +50,7 @@ var enemy;
 var phase;
 
 // Plummeting
-var plummetSpeed;	
+var plummetSpeed;
 
 // Triggering
 var restartTriggered;
@@ -69,7 +69,7 @@ function preload() {
 	// Sound collected from: https://pixabay.com/sound-effects/scream-85294/
 	scream_sound = loadSound('assets/scream.mp3');
 	scream_sound.setVolume(0.5);
-git 
+
 	// Collectable Sound
 	// Sound collected from: https://mixkit.co/free-sound-effects/magic/
 	book_collection_sound = loadSound('assets/book_collection.mp3');
