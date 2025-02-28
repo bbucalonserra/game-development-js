@@ -49,6 +49,12 @@ var platform;
 var enemy;
 var phase;
 
+// Plummeting
+var plummetSpeed;
+
+// Triggering
+var restartTriggered;
+
 // Pre Load Function: Load assets in the sketch (sounds, images, etc.)
 function preload() {
 	soundFormats('mp3', 'wav');
@@ -178,8 +184,14 @@ function startGame() {
 	// Initializing Game Score
 	game_score = 0;
 
+	// Velocity
+	plummetSpeed = 5;
+
 	// Flagpole
 	flagpole = {isReached: false, x_pos: 6800};
+
+	// Time
+	restartTriggered = false;
 
 	// enemies
 	enemy = [];
@@ -297,28 +309,32 @@ function draw() {
 	}
 
 	// Applying gravity for jumps
-	if (gameChar_y < floorPos_y == true) {
-		var isContact = false;
-		for (var i = 0; i < platform.length; i++) {
-			if(platform[i].checkContact(gameChar_x, gameChar_y) == true) {
-				isContact = true;
-				isFalling = false;
-				break;
+	if(isPlummeting == false){
+		if (gameChar_y < floorPos_y == true) {
+			var isContact = false;
+			for (var i = 0; i < platform.length; i++) {
+				if(platform[i].checkContact(gameChar_x, gameChar_y) == true) {
+					isContact = true;
+					isFalling = false;
+					break;
+				}
 			}
+			if (isContact == false) {
+				gameChar_y += 3;
+				isFalling = true
+			}
+		} else {
+			isFalling = false;
+			plummetSpeed = 5;
 		}
-		if (isContact == false) {
-			gameChar_y += 3;
-			isFalling = true
-		}
-	} else {
-		isFalling = false;
 	}
 
 	// Restricting movement while falling and adding velocity in y axis to fall
 	if(isPlummeting == true){
 		isLeft = false;
 		isRight = false;
-		gameChar_y +=5;
+		gameChar_y += plummetSpeed;
+		plummetSpeed += 0.2;
 	}
 
 	// Restricting movement after winning the first level of the game
@@ -628,8 +644,8 @@ function checkCollectable(t_collectable){
 function checkCanyon(t_canyon) {
     for (var i = 0; i < t_canyon.length; i++) {
         if (
-            gameChar_x > t_canyon[i].x_pos +  t_canyon[i].size * 2 &&
-            gameChar_x < t_canyon[i].x_pos +  t_canyon[i].size * 16 &&
+            gameChar_x > t_canyon[i].x_pos +  t_canyon[i].size * 3.5 &&
+            gameChar_x < t_canyon[i].x_pos +  t_canyon[i].size * 15.5 &&
             gameChar_y >= t_canyon[i].y_pos + 332
         ) {
             if (!isPlummeting) {
@@ -651,7 +667,7 @@ function drawCharacter() {
 		arc(gameChar_x - 15, gameChar_y - 63, 14, 14, 0, PI, PIE);
 		arc(gameChar_x + 7, gameChar_y - 63, 14, 14, 0, PI, PIE);
 
-		// Beardgit
+		// Beard
 		noStroke();
 		fill(200);
 		rect(gameChar_x + 2, gameChar_y - 65, 7, 10, 1);
@@ -1687,12 +1703,16 @@ function drawBalloon(shapePosX, shapePosY, shapeWidth, shapeHeight) {
 	text("not, pass!", 532, 345);
 }
 
-function checkPlayerDie () {
-	if(gameChar_y > 576) {
-		lives -=1;
+function checkPlayerDie() {
+	if (gameChar_y > 576 && !restartTriggered) {
+	  restartTriggered = true;
+	  setTimeout(function() {
+		lives -= 1;
 		if (lives > 0) {
-			startGame();
+		  startGame();
 		}
+		restartTriggered = false;
+	  }, 1000); // Delaying one second after restart the dame
 	}
 }
 
