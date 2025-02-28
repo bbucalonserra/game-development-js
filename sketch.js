@@ -651,7 +651,7 @@ function drawCharacter() {
 		arc(gameChar_x - 15, gameChar_y - 63, 14, 14, 0, PI, PIE);
 		arc(gameChar_x + 7, gameChar_y - 63, 14, 14, 0, PI, PIE);
 
-		// Beard
+		// Beardgit
 		noStroke();
 		fill(200);
 		rect(gameChar_x + 2, gameChar_y - 65, 7, 10, 1);
