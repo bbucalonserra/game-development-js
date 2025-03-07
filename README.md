@@ -1,7 +1,7 @@
 # Game Development - Javascript
 Please, feel free to play the game by clicking [HERE](https://bbucalonserra.github.io/game-development-js/)  :arrow_backward: :bookmark_tabs: 
 
-![Game Picture](https://github.com/bbucalonserra/game-development-js/blob/main/game_picture.png)
+![Game Picture](https://github.com/bbucalonserra/game-development-js/blob/main/Others/game_picture.png)
 
 # The Great Wizard Game - Instructions
 This is a 2D game where the wizard must collect the spellbooks avoid eyes to not be seen and reach the finish line. The game was developed using p5.js and features sound effects, jumping mechanics, and a scrolling world.
