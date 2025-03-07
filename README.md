@@ -20,6 +20,7 @@ This is a 2D game where the wizard must collect the spellbooks avoid eyes to not
 * Concepts: advanced techniques ES6 syntax
 
 ## Project Structure
+```plaintext
 /game-development-js/
 │── Code/
 │   │── assets/
@@ -37,6 +38,7 @@ This is a 2D game where the wizard must collect the spellbooks avoid eyes to not
 │   │── Commentary.pdf
 │── Others/
 │   │── game_picture.png
+```
 
 ## How to Run the Game
 For run this code, the user must have installed in his machine:
