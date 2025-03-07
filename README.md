@@ -22,7 +22,7 @@ This is a 2D game where the wizard must collect the spellbooks avoid eyes to not
 ## Project Structure
 ```plaintext
 /game-development-js/
-│── Code/
+│── docs/
 │   │── assets/
 │   │   │── book_collection.mp3
 │   │   │── game_over.mp3
