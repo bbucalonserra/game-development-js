@@ -21,21 +21,37 @@ This is a 2D game where the wizard must collect the spellbooks avoid eyes to not
 
 ## Project Structure
 /game-development-js/
+
 │── Code/
+
 │   │── assets/
+
 │   │   │── book_collection.mp3
+
 │   │   │── game_over.mp3
+
 │   │   │── jump.mp3
+
 │   │   │── scream.mp3
+
 │   │   │── soundtrack.mp3
+
 │   │── index.html
+
 │   │── p5.min.js
+
 │   │── p5.sound.min
+
 │   │── sketch.js
+
 │── Commentary/
+
 │   │── Commentary.docx
+
 │   │── Commentary.pdf
+
 │── Others/
+
 │   │── game_picture.png
 
 ## How to Run the Game
