@@ -3,60 +3,61 @@
 
 // ----- DECLARING VARIABLES -----
 // Game character
-var gameChar_x;
-var gameChar_y;
+let gameChar_x;
+let gameChar_y;
 
 // Floor
-var floorPos_y;
+let floorPos_y;
 
 // Character actions
-var isLeft;
-var isRight;
-var isPlummeting;
-var isFalling;
+let isLeft;
+let isRight;
+let isPlummeting;
+let isFalling;
 
 // Collectable 
-var collectable;
+let collectable;
 
 // Scenario
-var tree;
-var cloud;
-var mountain;
-var canyon;
+let tree;
+let cloud;
+let mountain;
+let canyon;
 
 // Sound
-var soundtrack_music;
-var jump_sound;
-var scream_sound;
-var book_collection_sound;
+let soundtrack_music;
+let jump_sound;
+let scream_sound;
+let book_collection_sound;
 
 // Score
-var game_score;
+let game_score;
 
 // Flag pole
-var flagpole;
+let flagpole;
 
 // Camera position in X
-var cameraPosX;
+let cameraPosX;
 
 // Char Lives
-var lives;
+let lives;
 
 // Platforms
-var platform;
+let platform;
 
 // Enemy
-var enemy;
-var phase;
+let enemy;
+let phase;
 
 // Plummeting
-var plummetSpeed;
+let plummetSpeed;
 
 // Triggering
-var restartTriggered;
+let restartTriggered;
 
 // Pre Load Function: Load assets in the sketch (sounds, images, etc.)
 function preload() {
+	// Formats of sound
 	soundFormats('mp3', 'wav');
 
 	// Load sounds
@@ -96,7 +97,6 @@ function setup() {
 	// Music
 	soundtrack_music.loop();
 }
-
 
 function startGame() {
 	// Initial char position
@@ -189,7 +189,6 @@ function startGame() {
 	jumpVelocity = 0;
 	gravityAcceleration = 0.5;
 
-
 	// Flagpole
 	flagpole = {isReached: false, x_pos: 6800};
 
@@ -273,7 +272,7 @@ function draw() {
 	for (var i = 0; i < enemy.length; i++) {
 		enemy[i].draw();
 
-		var isContact = enemy[i].checkContact(gameChar_x, gameChar_y);
+		let isContact = enemy[i].checkContact(gameChar_x, gameChar_y);
 
 		if (isContact) {
 			if(lives > 0) {
@@ -293,10 +292,11 @@ function draw() {
 		drawLives(18 + i * 15, 70, 10);
 	}
 
+	// Draw Collectable
 	for (i = 0; i < game_score; i = i + 1) {
-		var x = i * 40 - 250;
-		var y = -250;
-		var z = 50;
+		let x = i * 40 - 250;
+		let y = -250;
+		let z = 50;
 		drawCollectable({x_pos: x, y_pos: y, size: z});
 	}
 
@@ -314,7 +314,7 @@ function draw() {
 	// Applying gravity for jumps
 	if(isPlummeting == false){
 		if (gameChar_y < floorPos_y == true) {
-			var isContact = false;
+			let isContact = false;
 			for (var i = 0; i < platform.length; i++) {
 				if(platform[i].checkContact(gameChar_x, gameChar_y) == true) {
 					isContact = true;
@@ -1619,6 +1619,7 @@ function drawCharacter() {
 	}
 }
 
+// Function to draw instructions in the beginning of the game
 function drawInstructions () {
 	// Main Instructions
 	textFont("Tahoma");
@@ -1637,8 +1638,7 @@ function drawInstructions () {
 	text("dear wizard", - 260, 280);
 }
 
-
-
+// Function to draw scores
 function drawScore () {
 	textFont("Tahoma");
 	textSize(20);
@@ -1646,7 +1646,8 @@ function drawScore () {
 	fill(0);
 }
 
-// Function made by Mithru, published in p5.js website 
+//END - CODE WRITTEN WITHOUT ASSISTANCE
+//Function to draw ballon from Mithru, https://editor.p5js.org/Mithru/sketches/Hk1N1mMQg
 function drawLives (x, y, size) {
 	fill(220, 0, 0);
 	beginShape();
@@ -1656,6 +1657,8 @@ function drawLives (x, y, size) {
 	endShape(CLOSE);
 }
 
+// START - CODE WRITTEN WITHOUT ASSISTANCE
+// Function to render the flagpole
 function renderFlagpole() {
 	push();
 	strokeWeight(5);
@@ -1673,15 +1676,17 @@ function renderFlagpole() {
 	pop();
 }
 
+// Function to check if the flagpole is touched
 function checkFlagpole () {
-	var d = abs(gameChar_x - flagpole.x_pos);
+	let d = abs(gameChar_x - flagpole.x_pos);
 
 	if(d < 15) {
 		flagpole.isReached = true;
 	}
 }
 
-// Code got from here: https://editor.p5js.org/jordanne/sketches/lAQF2I-Gh
+//END - CODE WRITTEN WITHOUT ASSISTANCE
+// Function to draw ballon from jordanne, https://editor.p5js.org/jordanne/sketches/lAQF2I-Gh
 function drawBalloon(shapePosX, shapePosY, shapeWidth, shapeHeight) {
 	push();
 	translate(shapePosX, shapePosY);
@@ -1706,6 +1711,8 @@ function drawBalloon(shapePosX, shapePosY, shapeWidth, shapeHeight) {
 	text("not, pass!", 532, 345);
 }
 
+//START - CODE WRITTEN WITHOUT ASSISTANCE
+// Function to check if the player has or hasn't died
 function checkPlayerDie() {
 	if (gameChar_y > 576 && !restartTriggered) {
 	  restartTriggered = true;
@@ -1715,12 +1722,13 @@ function checkPlayerDie() {
 		  startGame();
 		}
 		restartTriggered = false;
-	  }, 1000); // Delaying one second after restart the dame
+	  }, 1000);
 	}
 }
 
+// Function to draw the platforms. Arguments: x (position in x), y (position in y), length (size of the platforms, the height is the same for all)
 function drawPlatforms (x,y,length) {
-	var p = {
+	let p = {
 		x: x,
 		y: y,
 		length: length,
@@ -1730,7 +1738,7 @@ function drawPlatforms (x,y,length) {
 		},
 		checkContact: function(gc_x, gc_y) {
 			if(gc_x > this.x && gc_x < this.x + this.length) {
-				var d = this.y - gc_y;
+				let d = this.y - gc_y;
 				if(d >= 0 && d < 5) {
 					return true;
 				}
@@ -1742,6 +1750,7 @@ function drawPlatforms (x,y,length) {
 	return p;
 }
 
+// Function to draw the enemies. Arguments: x (position in x), y (position in y), range (range where the enemie will walk), speed (frames per second)
 function enemies (x, y, range, speed) {
 	this.x = x;
 	this.y = y;
@@ -1764,15 +1773,17 @@ function enemies (x, y, range, speed) {
 
     this.draw = function () {
         this.update();
-		// GOT FROM https://editor.p5js.org/jackiehu/sketches/Sy7JkKJk4
-        // Centralize a forma em torno de currentX e y
+		// END - CODE WRITTEN WITHOUT ASSISTANCE
+		// Function to draw an eye from jackie, https://editor.p5js.org/jackiehu/sketches/Sy7JkKJk4
+        // Centrailize in currentX and y
         push();
         translate(this.currentX, this.y);
 		scale(0.4);
 
-		// Calcula a transparência dinâmica usando seno
-		let alphaValue = map(sin(phase), -1, 1, 200, 255); // Oscila entre 50 e 255
-		phase += 0.05; // Incrementa a fase para a próxima iteração
+		// START - CODE WRITTEN WITHOUT ASSISTANCE
+		// EXTRA: Using dynamic transparency usin sin
+		let alphaValue = map(sin(phase), -1, 1, 200, 255);
+		phase += 0.05; 
 
         // Main
         fill(244, 170, 43, alphaValue);
@@ -1799,7 +1810,7 @@ function enemies (x, y, range, speed) {
     };
 
 	this.checkContact = function(gc_x, gx_y) {
-		var d = dist(gc_x, gx_y, this.currentX, this.y)
+		let d = dist(gc_x, gx_y, this.currentX, this.y)
 
 		if(d < 30) {
 			return true;
