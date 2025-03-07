@@ -98,7 +98,7 @@ function setup() {
 	soundtrack_music.loop();
 }
 
-function startGame() {
+const startGame = () => {
 	// Initial char position
 	gameChar_x = width / 2;
 	gameChar_y = floorPos_y;
@@ -425,7 +425,7 @@ function keyReleased() {
 }
 
 // Function to draw the clouds (as in game project part 5)
-function drawCloud(cloudItem) {
+const drawCloud = (cloudItem) => {
 	// Cloud shadow
 	noStroke();
 	fill(75, 0, 75);
@@ -441,7 +441,7 @@ function drawCloud(cloudItem) {
 }
 
 // Function to draw the trees (as in game project part 5)
-function drawTree(treeItem) {
+const drawTree = (treeItem) => {
 	// Tree leaves
 	fill(190, 90, 0);
 	ellipse(treeItem.x_pos + 169, treeItem.y_pos + 25, 90, 150);
@@ -475,7 +475,7 @@ function drawTree(treeItem) {
 }
 
 // Function to draw the moutain (as in game project part 5)
-function drawMountain(mountainItem, part = "all") {
+const drawMountain = (mountainItem, part = "all") => {
     if (part === "all" || part === "back") {
         // Back mountains (black mountains)
         fill(90, 80, 100);
@@ -546,7 +546,7 @@ function drawMountain(mountainItem, part = "all") {
 }
 
 // Function to draw the collectable (as in game project part 5)
-function drawCollectable(item) {
+const drawCollectable = (item) => {
 	// Book - Pages (in white)
 	fill(255);
 	stroke(0);
@@ -600,7 +600,7 @@ function drawCollectable(item) {
 }
 
 // Function to draw the canyon (as in game project part 5)
-function drawCanyon(canyon) {
+const drawCanyon = (canyon) => {
 	// Canyon body
 	fill(250, 250, 250);
 	beginShape();
@@ -631,7 +631,7 @@ function drawCanyon(canyon) {
 }
 
 // Function to the collectable interaction (as in game project part 5)
-function checkCollectable(t_collectable){
+const checkCollectable = (t_collectable) => {
 	for (var i = 0; i < t_collectable.length; i++) {
 		if (
 			!t_collectable[i].isFound && 
@@ -644,7 +644,7 @@ function checkCollectable(t_collectable){
 	}
 }
 
-function checkCanyon(t_canyon) {
+const checkCanyon = (t_canyon) => {
     for (var i = 0; i < t_canyon.length; i++) {
         if (
             gameChar_x > t_canyon[i].x_pos +  t_canyon[i].size * 3.5 &&
@@ -660,7 +660,7 @@ function checkCanyon(t_canyon) {
 }
 
 // Draw Character
-function drawCharacter() {
+const drawCharacter = () => {
 	// ----- DRAW GAME CHARACTER -----
 	// Game Character - Jumping Left
 	if (isLeft && isFalling) {
@@ -1620,7 +1620,7 @@ function drawCharacter() {
 }
 
 // Function to draw instructions in the beginning of the game
-function drawInstructions () {
+const drawInstructions = () => {
 	// Main Instructions
 	textFont("Tahoma");
 	textSize(15);
@@ -1639,7 +1639,7 @@ function drawInstructions () {
 }
 
 // Function to draw scores
-function drawScore () {
+const drawScore = () => {
 	textFont("Tahoma");
 	textSize(20);
 	textStyle(NORMAL);
@@ -1648,7 +1648,7 @@ function drawScore () {
 
 //END - CODE WRITTEN WITHOUT ASSISTANCE
 //Function to draw ballon from Mithru, https://editor.p5js.org/Mithru/sketches/Hk1N1mMQg
-function drawLives (x, y, size) {
+const drawLives = (x, y, size) => {
 	fill(220, 0, 0);
 	beginShape();
 	vertex(x, y);
@@ -1659,7 +1659,7 @@ function drawLives (x, y, size) {
 
 // START - CODE WRITTEN WITHOUT ASSISTANCE
 // Function to render the flagpole
-function renderFlagpole() {
+const renderFlagpole = () => {
 	push();
 	strokeWeight(5);
 	stroke(130, 130, 130);
@@ -1677,7 +1677,7 @@ function renderFlagpole() {
 }
 
 // Function to check if the flagpole is touched
-function checkFlagpole () {
+const checkFlagpole = () => {
 	let d = abs(gameChar_x - flagpole.x_pos);
 
 	if(d < 15) {
@@ -1687,7 +1687,7 @@ function checkFlagpole () {
 
 //END - CODE WRITTEN WITHOUT ASSISTANCE
 // Function to draw ballon from jordanne, https://editor.p5js.org/jordanne/sketches/lAQF2I-Gh
-function drawBalloon(shapePosX, shapePosY, shapeWidth, shapeHeight) {
+const drawBalloon = (shapePosX, shapePosY, shapeWidth, shapeHeight) => {
 	push();
 	translate(shapePosX, shapePosY);
 	scale(shapeWidth/235.20299400000002, shapeHeight/233.80118399999998);
@@ -1713,7 +1713,7 @@ function drawBalloon(shapePosX, shapePosY, shapeWidth, shapeHeight) {
 
 //START - CODE WRITTEN WITHOUT ASSISTANCE
 // Function to check if the player has or hasn't died
-function checkPlayerDie() {
+const checkPlayerDie = () => {
 	if (gameChar_y > 576 && !restartTriggered) {
 	  restartTriggered = true;
 	  setTimeout(function() {
@@ -1727,7 +1727,7 @@ function checkPlayerDie() {
 }
 
 // Function to draw the platforms. Arguments: x (position in x), y (position in y), length (size of the platforms, the height is the same for all)
-function drawPlatforms (x,y,length) {
+const drawPlatforms = (x,y,length) => {
 	let p = {
 		x: x,
 		y: y,
